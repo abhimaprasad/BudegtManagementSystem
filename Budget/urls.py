@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path,include
-from Budget.views import register,signIn,signOut,editProfile,userHome,addExpense
+from Budget.views import register,signIn,signOut,editProfile,userHome,addExpense,editExpense,deleteExpense
 urlpatterns = [
     path("register",register,name="register"),
     path("signin",signIn,name="signin"),
@@ -9,4 +9,6 @@ urlpatterns = [
     path("edit",editProfile,name="editprofile"),
     path("home",userHome,name="home"),
     path("add",addExpense,name="addexpense"),
+    path("editexpense/<int:pk>",editExpense,name="editexpense"),
+    path("deleteexpense/<int:pk>",deleteExpense,name="deleteexpense")
 ]

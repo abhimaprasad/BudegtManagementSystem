@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
-
+from Budget.forms import Expense
+from Budget.forms import AddExpenseForm
 
 
 # Create your views here.
@@ -63,8 +64,7 @@ def editProfile(request):
 def userHome(request):
     return render(request,"Budget/home.html")
 
-from Budget.forms import Expense
-from Budget.forms import AddExpenseForm
+
 def addExpense(request):
     form=AddExpenseForm(initial={"user":request.user})
     context={}
@@ -77,3 +77,29 @@ def addExpense(request):
             form.save()
             return redirect("addexpense")
     return render(request,"Budget/addexpense.html",context)
+
+
+def editExpense(request,pk):
+    expense=Expense.objects.get(id=pk)
+    print(expense)
+    form=AddExpenseForm(instance=expense)
+    context={}
+    context["form"]=form
+    if request.method=="POST":
+        form=AddExpenseForm(instance=expense,data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("addexpense")
+        else:
+            context["form"] = form
+            return render(request, "Budget/editexpense.html", context)
+    return render(request, "Budget/editexpense.html", context)
+
+def deleteExpense(request,pk):
+    try:
+        Expense.objects.get(id=pk).delete()
+        return redirect("addexpense")
+    except Exception as e:
+        return redirect("addexpense")
+
+

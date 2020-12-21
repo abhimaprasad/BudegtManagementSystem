@@ -26,8 +26,8 @@
     <td>{{exp.amount}}</td>
     <td>{{exp.date}}</td>
     <td>{{exp.note}}</td>
-    <td>Edit</td>
-    <td>Delete</td>
+        <td><a href="{%url 'editexpense' exp.id%}">Edit</a></td>
+        <td><a href="{%url 'deleteexpense' exp.id%}">Delete</a></td>
     </tr>
     {% endfor %}
 </table>

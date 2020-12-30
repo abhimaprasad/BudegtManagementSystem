@@ -21,3 +21,8 @@ class AddExpenseForm(ModelForm):
         model=Expense
         fields=["category","amount","note","user"]
 
+
+class ReviewExpenseForm(forms.Form):
+    user=forms.HiddenInput()
+    from_date=forms.DateField(widget=forms.SelectDateWidget())
+    to_date=forms.DateField(widget=forms.SelectDateWidget())

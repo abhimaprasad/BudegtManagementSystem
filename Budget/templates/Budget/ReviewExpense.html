@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit">
+</form>
+
+<hr>
+{% if ex %}
+<h1>Your total amount is {{total.amount__sum}}</h1>
+<table>
+    <tr>
+        <td>category</td>
+        <td>amount</td>
+        <td>date</td>
+        <td>note</td>
+    </tr>
+
+    {% for exp in ex%}
+    <tr>
+    <td>{{exp.category}}</td>
+    <td>{{exp.amount}}</td>
+    <td>{{exp.date}}</td>
+    <td>{{exp.note}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif%}
+</body>
+</html>

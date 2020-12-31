@@ -1,8 +1,9 @@
 
 from django.contrib import admin
 from django.urls import path,include
-from Budget.views import register,signIn,signOut,editProfile,userHome,addExpense,editExpense,deleteExpense,reviewExpense
+from Budget.views import register,signIn,signOut,editProfile,userHome,addExpense,editExpense,deleteExpense,reviewExpense,index
 urlpatterns = [
+    path("",index,name="index"),
     path("register",register,name="register"),
     path("signin",signIn,name="signin"),
     path("signout",signOut,name="signout"),

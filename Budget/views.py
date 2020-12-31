@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 from Budget.forms import RegistrationForm,LoginForm,ReviewExpenseForm
-
+def index(request):
+    return render(request,"Budget/Base.html")
 def register(request):
     form=RegistrationForm()
     context={}
@@ -58,7 +59,7 @@ def editProfile(request):
             form.save()
             return redirect("signin")
     else:
-        form[context]=form
+        context["form"]=form
         return render(request, "Budget/editprofile.html", context)
 
     return render(request,"Budget/editprofile.html",context)

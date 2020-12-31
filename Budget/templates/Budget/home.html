@@ -1,15 +1,17 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>welcome user{{request.user}}</h1>
+{% extends 'Budget/Base.html' %}
+
+    {% block body_block %}
+    <div>
+ <h1>welcome user{{request.user}}</h1>
 <h3>{{request.user}}<a href="{%url 'signout'%}">Logout</a> </h3>
 
-<a href="{%url 'editprofile'%}">EDIT PROFILE</a>
-<a href="{%url 'addexpense'%}">ADD EXPENSE</a>
-<a href="{%url 'review'%}">REVIEW EXPENSE</a>
-</body>
-</html>
+
+
+
+</div>
+{% endblock %}
+<!--#django decorators-->
+<!--serving static files-->
+<!--template inheritance-->
